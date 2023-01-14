@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Search {% endblock %}
+{% block body %}
+
+{% if possible_pages %}
+<h3>Results</h3>
+<ul>
+  {% for page in possible_pages %}
+  <li><a href="{% url 'page' page %}">{{page}}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
