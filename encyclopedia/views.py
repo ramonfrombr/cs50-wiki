@@ -60,14 +60,12 @@ def new_page(request):
 
             util.get_entry(form.cleaned_data['page_title'])
 
-            util.save_entry()
-
             if form.cleaned_data['page_title'] in util.list_entries():
                 return HttpResponseRedirect(reverse("not_allowed"))
             else:
                 util.save_entry(form.cleaned_data['page_title'], form.cleaned_data['content'])
 
-                return HttpResponseRedirect(reverse("page", args=form.cleaned_data['page_title']))
+                return HttpResponseRedirect(reverse("page", args=(form.cleaned_data['page_title'],)))
             
 
     return render(request, 'encyclopedia/new_page.html', {'form': SearchPageForm(),'new_page_form': NewPageForm})
@@ -83,7 +81,7 @@ def edit_page(request, page):
 
             util.save_entry(page, form.cleaned_data['content'])
 
-            return HttpResponseRedirect(reverse("page", args=page))
+            return HttpResponseRedirect(reverse("page", args=(page,)))
     
     default_data = {'content': util.get_entry(page)}
 

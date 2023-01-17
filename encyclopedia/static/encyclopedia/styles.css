@@ -36,11 +36,17 @@ textarea {
     margin-top: 5px;
 }
 
+.search-form {
+    margin-bottom: 20px;
+}
 
 .search-form input {
     max-width: 140px;
 }
 
+.search-form button {
+    margin-top: 5px;
+}
 
 .form-container {
     width: 80%;

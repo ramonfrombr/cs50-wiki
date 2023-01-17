@@ -15,7 +15,10 @@
 
                 <form action="{% url 'search' %}" method="post" class="search-form">
                     {% csrf_token %}
-                    {{ form }}
+                    {% for field in form %}
+                    {{ field }}
+                    {% endfor %}
+                    <button type="submit">Search</button>
                 </form>
                 <div>
                     <a href="{% url 'index' %}">Home</a>
